@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
     "test": "jest"
   },
   "repository": {
@@ -16,12 +18,12 @@
   },
   "homepage": "https://github.com/SaakshiSingh/NamasteReact#readme",
   "devDependencies": {
-    "parcel": "^2.15.4"
+    "parcel": "^2.15.4",
+    "prettier": "3.6.2"
   },
   "dependencies": {
     "react": "^19.1.1",
     "react-dom": "^19.1.1"
   },
-  "browserslist":
-  "last 2 versions"
+  "browserslist": "last 2 versions"
 }
