@@ -54,6 +54,14 @@
   display: flex;
   justify-content: space-between;
   background-color: antiquewhite;
+  position: fixed;
+
+  bottom: 0; /* Positions the element at the very bottom of the viewport */
+  left: 0; /* Aligns the element to the left edge of the viewport */
+  width: 100%; /* Makes the element span the full width of the viewport */
+  padding: 10px; /* Example padding */
+  text-align: center; /* Example text alignment */
+  z-index: 1000; /* Ensures the footer appears on top of other content */
 }
 .footer > ul {
   font-size: 20px;
@@ -63,5 +71,9 @@
 
 .footer > ul > li {
   padding: 10px;
+  margin: 10px;
+}
+
+.filter-btn {
   margin: 10px;
 }
