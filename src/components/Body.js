@@ -1,10 +1,12 @@
+import { Link } from "react-router";
 import RestaurantCard from "./RestaurantCard";
-import restaurantsList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
+
 const Body = () => {
-  //creating a state variable
-  let [listOfRestaurants, setListOfRestuarants] = useState([]);
+  //creating state variables always at the top of the component
+  let [listOfRestaurants, setListOfRestaurants] = useState([]);
   let [searchText, setSearchText] = useState("");
   let [filtered, setFiltered] = useState([]);
 
@@ -22,14 +24,17 @@ const Body = () => {
     const json = await data.json();
 
     //for re rendering the page with the fetched data , we use setter function
-    setListOfRestuarants(
+    setListOfRestaurants(
       json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
-    setFiltered(listOfRestaurants);
+    setFiltered(
+      json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   //if data is empty (still being fetched) -> screen should show loader
   //conditional rendering using ternary operator
+
   return listOfRestaurants.length === 0 ? (
     <Shimmer />
   ) : (
@@ -63,10 +68,11 @@ const Body = () => {
           className="filter-btn "
           onClick={() => {
             let filteredList = listOfRestaurants.filter(
-              (res) => res.info.avgRatingString > 4.2
+              (res) => res.info.avgRatingString >= 4.3
             );
 
-            setListOfRestuarants(filteredList);
+            // setListOfRestaurants(filteredList);
+            setFiltered(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -74,7 +80,12 @@ const Body = () => {
       </div>
       <div className="res-container">
         {filtered.map((restaurant) => (
-          <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+          <Link
+            key={restaurant.info.id}
+            to={"/restaurant/" + restaurant.info.id}
+          >
+            <RestaurantCard resData={restaurant} />
+          </Link>
         ))}
       </div>
     </div>

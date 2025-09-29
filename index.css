@@ -98,3 +98,17 @@
 .filter {
   display: flex;
 }
+
+a {
+  color: black; /* or a specific color like black, #333, etc. */
+  text-decoration: none;
+}
+
+/* To ensure consistency across different states (link, visited, hover, active) */
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: inherit; /* or the specific color you chose above */
+  text-decoration: none;
+}
