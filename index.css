@@ -112,3 +112,15 @@ a:active {
   color: inherit; /* or the specific color you chose above */
   text-decoration: none;
 }
+
+.usercard-container {
+  display: flex;
+
+  flex-wrap: wrap;
+}
+.UserCard {
+  width: 350px;
+  border: 6px ridge black;
+  padding: 10px;
+  margin: 30px;
+}
