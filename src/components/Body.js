@@ -3,6 +3,7 @@ import RestaurantCard from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   //creating state variables always at the top of the component
@@ -32,6 +33,12 @@ const Body = () => {
     );
   };
 
+  const onlineState = useOnlineStatus();
+  console.log(onlineState);
+  if (!onlineState) {
+    console.log("render error here ");
+    return <h1>Oops!! Looks like you have lost the internet connection </h1>;
+  }
   //if data is empty (still being fetched) -> screen should show loader
   //conditional rendering using ternary operator
 
